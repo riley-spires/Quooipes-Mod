@@ -99,14 +99,7 @@ register("chat", (rarity, treasure, event) => {
     }
 
     if (Settings.flexboneOpenAH && treasure === "a Flexbone") {
-        World.getAllEntitiesOfType(EntityArmorStandClass).forEach((entity) => {
-            if (entity.getName() === "?") {
-                pressAndReleaseSequence(1, 100)
-            }
-        });
-        setTimeout(() => {
-            ChatLib.command("ahs Flexbone")
-        }, 200)
+        ChatLib.command("ahs Flexbone")
     }
 }).setCriteria("⛃ ${rarity} CATCH! You caught ${treasure}!");
 
