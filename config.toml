@@ -1,0 +1,22 @@
+
+[general]
+
+	[general.category]
+		color_picker = "255,0,0,255"
+		text = ""
+
+[fishing]
+	flexbone_open_ah = true
+	treasure_notification = true
+	max_fish = 10
+
+	[fishing.auto_fishing]
+		status_chats = false
+		auto_fish = true
+		max_fish = 10
+
+	[fishing.treasure_display]
+		y_position = 360
+		x_position = 640
+		enabled = true
+

@@ -1,0 +1,10 @@
+{
+    "name": "Quoopie's Mod",
+    "description": "Quoopie's Skyblock Mod for 1.21.5",
+    "version": "1.0.0",
+    "creator": "quoopie",
+    "entry": "index.js",
+    "requires": [
+        "Vigilance"
+    ]
+}
