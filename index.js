@@ -25,7 +25,7 @@ register("guiClosed", () => {
 register("tick", () => {
     if (!Settings.enabled) return;
 
-    if (count !== 0 && count === targetCount) {
+    if (!guiOpen && count !== 0 && count >= targetCount) {
         if (Settings.statusUpdatesEnabled) {
             ChatLib.chat("&c[Quoopie's Mod] Moving cursor...");
         }
