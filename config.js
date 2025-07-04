@@ -20,6 +20,13 @@ class Settings {
     })
     treasureNotifEnabled = true;
 
+    @SwitchProperty({
+        name: "Enabled",
+        description: "Enables the auto harp module",
+        category: "Melody",
+    })
+    melodyEnabled = true;
+
     @SliderProperty({
         name: "X Position",
         description: "The X Position of the center of the notification text",
