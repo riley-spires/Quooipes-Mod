@@ -9,8 +9,9 @@ class GlowingMushroomHighlight {
         register("postRenderWorld", (partialTicks) => {
             if (!Settings.glowingMushroomHighlightEnabled) return;
 
-            for (const coord of this.blocksToRender.values()) {
-                renderBox(Renderer.GREEN, coord.x, coord.y, coord.z, 5);
+            for (const coordStr of this.blocksToRender.values()) {
+                let [x, y, z] = JSON.parse(coordStr);
+                renderBox(Renderer.GREEN, x, y, z, 5);
             }
         });
 
@@ -22,21 +23,30 @@ class GlowingMushroomHighlight {
             let y = Math.floor(particle.getY());
             let z = Math.floor(particle.getZ());
 
-            let coord = {
-                "x": x,
-                "y": y,
-                "z": z
-            }
-
             let id = World.getBlockAt(x, y, z).getType().getRegistryName();
+
+            let coordStr = JSON.stringify([x, y, z]);
 
             if (!this.mushroomIds.includes(id)) return;
 
-            if (!this.blocksToRender.has(coord)) {
-                this.blocksToRender.add(coord);
+            if (!this.blocksToRender.has(coordStr)) {
+                this.blocksToRender.add(coordStr);
+            }
+        });
+
+        register("tick", () => {
+            for (const coordStr of this.blocksToRender.values()) {
+                let [x, y, z] = JSON.parse(coordStr);
+
+                let block =  World.getBlockAt(x, y, z);
+
+                if (!this.mushroomIds.includes(block.getType().getRegistryName())) {
+                    this.blocksToRender.delete(coordStr);
+                }
             }
         });
     }
+
 }
 
 export default new GlowingMushroomHighlight();
