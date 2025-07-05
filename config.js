@@ -27,6 +27,13 @@ class Settings {
     })
     melodyEnabled = true;
 
+    @SwitchProperty({
+        name: "Enabled",
+        description: "Draws boxes around glowing mushrooms",
+        category: "Visual"
+    })
+    glowingMushroomHighlightEnabled = true;
+
     @SliderProperty({
         name: "X Position",
         description: "The X Position of the center of the notification text",
